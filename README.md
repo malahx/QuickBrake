@@ -1,5 +1,5 @@
 ﻿#### QuickBrake
-#### A plugin for Kerbal Space Program 1.0.2
+#### A plugin for Kerbal Space Program 1.0.X
 #### Copyright 2015 Malah
 
 This program is free software: you can redistribute it and/or modify
@@ -42,6 +42,9 @@ Delete the QuickBrake folder in your KSP/GameData folder.
 
 #### Changelog
 
+v1.01 - 2015.06.25
+* Updated to KSP 1.0.X
+
 v1.00 - 2015.05.08
 * First release.
 
@@ -55,4 +58,5 @@ v1.00 - 2015.05.08
 #### Links
 
 * http://forum.kerbalspaceprogram.com/threads/95168#QuickBrake
+* https://kerbalstuff.com/mod/764/QuickBrake
 * https://github.com/malahx/QuickBrake
