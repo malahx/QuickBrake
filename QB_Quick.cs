@@ -23,21 +23,31 @@ using UnityEngine;
 
 namespace QuickBrake {
 
-	public class Quick : MonoBehaviour {
+	public partial class QuickBrake : MonoBehaviour {
 
 		public readonly static string VERSION = Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Major + "." + Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Minor + Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Build;
 		public readonly static string MOD = Assembly.GetAssembly(typeof(QuickBrake)).GetName().Name;
-		private static bool isdebug = true;
 
 		// Afficher les messages sur la console
-		internal static void Log(string _string) {
-			if (isdebug) {
+		internal static void Log (string _string, bool debug = false)
+		{
+			if (!debug) {
 				Debug.Log (MOD + "(" + VERSION + "): " + _string);
+			} else {
+				#if DEBUG
+				Debug.Log (MOD + "(" + VERSION + "): " + _string);
+				#endif
 			}
 		}
-		internal static void Warning(string _string) {
-			if (isdebug) {
+
+		internal static void Warning (string _string, bool debug = false)
+		{
+			if (!debug) {
 				Debug.LogWarning (MOD + "(" + VERSION + "): " + _string);
+			} else {
+				#if DEBUG
+				Debug.LogWarning (MOD + "(" + VERSION + "): " + _string);
+				#endif
 			}
 		}
 	}

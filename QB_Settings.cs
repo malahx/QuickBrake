@@ -25,17 +25,23 @@ namespace QuickBrake {
 
 		public readonly static QSettings Instance = new QSettings();
 
-		internal static string FileConfig = KSPUtil.ApplicationRootPath + "GameData/" + Quick.MOD + "/Config.txt";
+		internal static string FileConfig = KSPUtil.ApplicationRootPath + "GameData/" + QuickBrake.MOD + "/Config.txt";
 
 		[Persistent] internal bool EnableBrakeAtLaunchPad = false;
 		[Persistent] internal bool EnableBrakeAtRunway = true;
 		[Persistent] internal bool AlwaysBrakeLandedRover = true;
+		[Persistent] internal bool AlwaysBrakeLandedBase = false;
+		[Persistent] internal bool AlwaysBrakeLandedLander = false;
 		[Persistent] internal bool AlwaysBrakeLandedVessel = false;
 
+		#if GUI
+		[Persistent] internal bool StockToolBar = true;
+		[Persistent] internal bool BlizzyToolBar = true;
+		#endif
 		public void Save() {
 			ConfigNode _temp = ConfigNode.CreateConfigFromObject(this, new ConfigNode());
 			_temp.Save(FileConfig);
-			Quick.Log ("Settings Saved");
+			QuickBrake.Log ("Settings Saved");
 		}
 		public void Load() {
 			if (File.Exists (FileConfig)) {
@@ -45,7 +51,7 @@ namespace QuickBrake {
 				} catch {
 					Save ();
 				}
-				Quick.Log ("Settings Loaded");
+				QuickBrake.Log ("Settings Loaded");
 			} else {
 				Save ();
 			}

@@ -22,7 +22,7 @@ using UnityEngine;
 namespace QuickBrake {
 
 	[KSPAddon(KSPAddon.Startup.Flight, false)]
-	public class QuickBrake : Quick {
+	public partial class QuickBrake : MonoBehaviour {
 
 		public static QuickBrake Instance {
 			get;
@@ -36,7 +36,15 @@ namespace QuickBrake {
 		}
 
 		public bool BrakeLandedRover(Vessel vessel) {
-			return QSettings.Instance.AlwaysBrakeLandedRover && vessel.situation == Vessel.Situations.LANDED && vessel.RevealType() == "Rover";
+			return QSettings.Instance.AlwaysBrakeLandedRover && vessel.situation == Vessel.Situations.LANDED && vessel.vesselType == VesselType.Rover;
+		}
+
+		public bool BrakeLandedBase(Vessel vessel) {
+			return QSettings.Instance.AlwaysBrakeLandedBase && vessel.situation == Vessel.Situations.LANDED && vessel.vesselType == VesselType.Base;
+		}
+
+		public bool BrakeLandedLander(Vessel vessel) {
+			return QSettings.Instance.AlwaysBrakeLandedLander && vessel.situation == Vessel.Situations.LANDED && vessel.vesselType == VesselType.Lander;
 		}
 
 		public bool BrakeLandedVessel(Vessel vessel) {
@@ -57,10 +65,12 @@ namespace QuickBrake {
 			}
 			Instance = this;
 			GameEvents.OnFlightGlobalsReady.Add (OnFlightGlobalsReady);
+			Warning ("Awake", true);
 		}
 			
 		private void Start() {
 			QSettings.Instance.Load ();
+			Warning ("Start", true);
 		}
 
 		private void OnFlightGlobalsReady(bool ready) {
@@ -68,13 +78,15 @@ namespace QuickBrake {
 			if (!ready || _vessel == null) {
 				return;
 			}
-			if (BrakeLandedRover(_vessel) || BrakeLandedVessel(_vessel) || BrakeAtLaunchPad(_vessel) || BrakeAtRunway(_vessel)) {
+			if (BrakeLandedVessel(_vessel) || BrakeLandedRover(_vessel) || BrakeLandedBase(_vessel) || BrakeLandedLander(_vessel) || BrakeAtLaunchPad(_vessel) || BrakeAtRunway(_vessel)) {
 				_vessel.ActionGroups.SetGroup (KSPActionGroup.Brakes, true);
+				Log ("Brake");
 			}
 		}
 
 		private void OnDestroy() {
 			GameEvents.OnFlightGlobalsReady.Remove (OnFlightGlobalsReady);
+			Warning ("OnDestroy", true);
 		}
 	}
 }

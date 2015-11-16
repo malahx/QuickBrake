@@ -20,14 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 QuickBrake is a small plugin which adds the possibility to brake your vessel at launch.
 
-On the config file you can:
-* enable/disable the brake at the Runway (true by default),
-* enable/disable the brake when you enter on a landed rover (true by default),
-* enable/disable the brake at the LaunchPad (false by default),
-* enable/disable the brake when you enter on a landed vessel (false by default),
-
-You can change these settings on the file "GameData/QuickBrake/Config.txt" which will be created after the first launch of KSP with QuickBrake.
-
 #### How to install it?
 
 Unzip all files. Put the QuickBrake folder in your KSP/GameData folder.
@@ -42,6 +34,13 @@ Delete the QuickBrake folder in your KSP/GameData folder.
 
 #### Changelog
 
+v1.10 - 2015.11.16
+* New: Added a brake at landed Base/Lander,
+* New: Added a GUI to edit settings,
+* New: Added support of Blizzy/Stock toolbars,
+* Optional: Added an optional version of QuickBrake without GUI and Stock/Blizzy Toolbar support,
+* Compiled against KSP 1.0.5
+
 v1.01 - 2015.06.25
 * Updated to KSP 1.0.X
 
@@ -51,6 +50,8 @@ v1.00 - 2015.05.08
 #### Thanks!
 
 * to UnanimousCoward to have requested this mod,
+* to blizzy for his Toolbar mod,
+* to Matthieu James for the Faenza icon theme,
 * to all other mod developers which make this game really huge,
 * to my friend Neimad who corrects my bad english ...
 * and to Squad for this awesome game.
@@ -60,3 +61,5 @@ v1.00 - 2015.05.08
 * http://forum.kerbalspaceprogram.com/threads/95168#QuickBrake
 * https://kerbalstuff.com/mod/764/QuickBrake
 * https://github.com/malahx/QuickBrake
+* Toolbar: http://forum.kerbalspaceprogram.com/threads/60863
+* Faenza icon theme: http://gnome-look.org/content/show.php/Faenza?content=128143
