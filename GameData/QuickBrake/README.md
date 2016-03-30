@@ -1,6 +1,6 @@
 ﻿#### QuickBrake
-#### A plugin for Kerbal Space Program 1.0.X
-#### Copyright 2015 Malah
+#### A plugin for Kerbal Space Program
+#### Copyright 2016 Malah
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,6 +34,10 @@ Delete the QuickBrake folder in your KSP/GameData folder.
 
 #### Changelog
 
+v1.11-pre - 2016.03.30
+* New: Deleted all GUI and support of Blizzy/Stock toolbars,
+* Compiled against KSP 1.1.0.1172
+
 v1.10 - 2015.11.16
 * New: Added a brake at landed Base/Lander,
 * New: Added a GUI to edit settings,
@@ -59,7 +63,7 @@ v1.00 - 2015.05.08
 #### Links
 
 * http://forum.kerbalspaceprogram.com/threads/95168#QuickBrake
-* https://kerbalstuff.com/mod/764/QuickBrake
+* http://spacedock.info/mod/103/QuickBrake
 * https://github.com/malahx/QuickBrake
 * Toolbar: http://forum.kerbalspaceprogram.com/threads/60863
 * Faenza icon theme: http://gnome-look.org/content/show.php/Faenza?content=128143
