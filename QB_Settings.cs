@@ -21,27 +21,38 @@ using System.IO;
 using UnityEngine;
 
 namespace QuickBrake {
-	public class QSettings : MonoBehaviour {
+	public class QSettings : QuickBrake {
 
-		public readonly static QSettings Instance = new QSettings();
+		[KSPField(isPersistant = true)]	private static readonly QSettings instance = new QSettings ();
+		public static QSettings Instance {
+			get {
+				if (!instance.isLoaded) {
+					instance.Load ();
+				}
+				return instance;
+			}
+		}
+		internal static string FileConfig = KSPUtil.ApplicationRootPath + "GameData/" + MOD + "/Config.txt";
 
-		internal static string FileConfig = KSPUtil.ApplicationRootPath + "GameData/" + QuickBrake.MOD + "/Config.txt";
+		[KSPField(isPersistant = true)]	private bool isLoaded = false;
+
+		[Persistent] internal bool Debug = true;
 
 		[Persistent] internal bool EnableBrakeAtLaunchPad = false;
 		[Persistent] internal bool EnableBrakeAtRunway = true;
+		[Persistent] internal bool EnableUnBrakeAtLaunch = true;
 		[Persistent] internal bool AlwaysBrakeLandedRover = true;
 		[Persistent] internal bool AlwaysBrakeLandedBase = false;
 		[Persistent] internal bool AlwaysBrakeLandedLander = false;
 		[Persistent] internal bool AlwaysBrakeLandedVessel = false;
 
-		#if GUI
 		[Persistent] internal bool StockToolBar = true;
 		[Persistent] internal bool BlizzyToolBar = true;
-		#endif
+
 		public void Save() {
 			ConfigNode _temp = ConfigNode.CreateConfigFromObject(this, new ConfigNode());
 			_temp.Save(FileConfig);
-			QuickBrake.Log ("Settings Saved");
+			Log ("Settings Saved", "QSettings", true);
 		}
 		public void Load() {
 			if (File.Exists (FileConfig)) {
@@ -51,10 +62,11 @@ namespace QuickBrake {
 				} catch {
 					Save ();
 				}
-				QuickBrake.Log ("Settings Loaded");
+				Log ("Settings Loaded", "QSettings", true);
 			} else {
 				Save ();
-			}
+			}	
+			isLoaded = true;
 		}
 	}
 }

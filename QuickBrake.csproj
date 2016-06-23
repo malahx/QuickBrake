@@ -38,8 +38,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QB.cs" />
-    <Compile Include="QB_Quick.cs" />
     <Compile Include="QB_Settings.cs" />
+    <Compile Include="QB_GUI.cs" />
+    <Compile Include="QB_ToolbarBlizzy.cs" />
+    <Compile Include="QB_ToolbarStock.cs" />
+    <Compile Include="ToolbarWrapper.cs" />
+    <Compile Include="QB_Brake.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -51,6 +55,8 @@
     <None Include="GameData\QuickBrake\README.md" />
     <None Include="GameData\QuickBrake\Plugins\QuickBrake.dll" />
     <None Include="install.sh" />
+    <None Include="GameData\QuickBrake\Textures\BlizzyToolBar.dds" />
+    <None Include="GameData\QuickBrake\Textures\StockToolBar.dds" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GameData\" />
@@ -67,6 +73,9 @@
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\lib\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\lib\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -17,76 +17,58 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 using System;
+using System.Reflection;
 using UnityEngine;
 
 namespace QuickBrake {
 
+	[KSPAddon(KSPAddon.Startup.SpaceCentre, false)]
+	public partial class QGUI : QuickBrake {}
+
 	[KSPAddon(KSPAddon.Startup.Flight, false)]
+	public partial class QBrake : QuickBrake {}
+		
+	[KSPAddon(KSPAddon.Startup.MainMenu, true)]
+	public partial class QStockToolbar : QuickBrake {}
+
 	public partial class QuickBrake : MonoBehaviour {
 
-		public static QuickBrake Instance {
-			get;
-			private set;
-		}
-	
-		public bool BrakeIsLocked {
-			get {
-				return InputLockManager.IsLocked (ControlTypes.GROUP_BRAKES);
+		public readonly static string VERSION = Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Major + "." + Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Minor + Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Build;
+		public readonly static string MOD = Assembly.GetAssembly(typeof(QuickBrake)).GetName().Name;
+
+		protected static void Log(string String, string Title = null, bool force = false) {
+			if (!force) {
+				if (!QSettings.Instance.Debug) {
+					return;
+				}
 			}
-		}
-
-		public bool BrakeLandedRover(Vessel vessel) {
-			return QSettings.Instance.AlwaysBrakeLandedRover && vessel.situation == Vessel.Situations.LANDED && vessel.vesselType == VesselType.Rover;
-		}
-
-		public bool BrakeLandedBase(Vessel vessel) {
-			return QSettings.Instance.AlwaysBrakeLandedBase && vessel.situation == Vessel.Situations.LANDED && vessel.vesselType == VesselType.Base;
-		}
-
-		public bool BrakeLandedLander(Vessel vessel) {
-			return QSettings.Instance.AlwaysBrakeLandedLander && vessel.situation == Vessel.Situations.LANDED && vessel.vesselType == VesselType.Lander;
-		}
-
-		public bool BrakeLandedVessel(Vessel vessel) {
-			return QSettings.Instance.AlwaysBrakeLandedVessel && vessel.situation == Vessel.Situations.LANDED;
-		}
-
-		public bool BrakeAtLaunchPad(Vessel vessel) {
-			return QSettings.Instance.EnableBrakeAtLaunchPad && vessel.situation == Vessel.Situations.PRELAUNCH && vessel.landedAt == "LaunchPad";
-		}
-
-		public bool BrakeAtRunway(Vessel vessel) {
-			return QSettings.Instance.EnableBrakeAtRunway && vessel.situation == Vessel.Situations.PRELAUNCH && vessel.landedAt == "Runway";
-		}
-
-		private void Awake() {
-			if (!HighLogic.LoadedSceneIsGame || Instance != null) {
-				Destroy (this);
+			if (Title == null) {
+				Title = MOD;
+			} else {
+				Title = string.Format ("{0}({1})", MOD, Title);
 			}
-			Instance = this;
-			GameEvents.OnFlightGlobalsReady.Add (OnFlightGlobalsReady);
-			Warning ("Awake", true);
+			Debug.Log (string.Format ("{0}[{1}]: {2}", Title, VERSION, String));
+		}
+
+		protected static void Warning(string String, string Title = null) {
+			if (Title == null) {
+				Title = MOD;
+			} else {
+				Title = string.Format ("{0}({1})", MOD, Title);
+			}
+			Debug.LogWarning (string.Format ("{0}[{1}]: {2}", Title, VERSION, String));
+		}
+
+		protected virtual void Awake() {
+			Log ("Awake");
 		}
 			
-		private void Start() {
-			QSettings.Instance.Load ();
-			Warning ("Start", true);
+		protected virtual void Start() {
+			Log ("Start");
 		}
 
-		private void OnFlightGlobalsReady(bool ready) {
-			Vessel _vessel = FlightGlobals.ActiveVessel;
-			if (!ready || _vessel == null) {
-				return;
-			}
-			if (BrakeLandedVessel(_vessel) || BrakeLandedRover(_vessel) || BrakeLandedBase(_vessel) || BrakeLandedLander(_vessel) || BrakeAtLaunchPad(_vessel) || BrakeAtRunway(_vessel)) {
-				_vessel.ActionGroups.SetGroup (KSPActionGroup.Brakes, true);
-				Log ("Brake");
-			}
-		}
-
-		private void OnDestroy() {
-			GameEvents.OnFlightGlobalsReady.Remove (OnFlightGlobalsReady);
-			Warning ("OnDestroy", true);
+		protected virtual void OnDestroy() {
+			Log ("OnDestroy");
 		}
 	}
 }
