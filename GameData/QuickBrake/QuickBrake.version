@@ -1,27 +1,27 @@
 {
 	"NAME"				: "QuickBrake",
 	"URL"				: "https://raw.githubusercontent.com/malahx/QuickBrake/master/QuickBrake.version",
-	"CHANGE_LOG_URL"	: "https://raw.githubusercontent.com/malahx/QuickBrake/master/README.md", 
+	"CHANGE_LOG_URL"		: "https://raw.githubusercontent.com/malahx/QuickBrake/master/README.md", 
 	"DOWNLOAD"			: "https://github.com/malahx/QuickBrake/releases",
 	"VERSION": {
 		"MAJOR"			: 1,
 		"MINOR"			: 1,
-		"PATCH"			: 3,
+		"PATCH"			: 4,
 		"BUILD"			: 0
 	},
-    "KSP_VERSION": {
-        "MAJOR"			: 1,
-        "MINOR"			: 1,
-        "PATCH"			: 3
-    },
-    "KSP_VERSION_MIN": {
-        "MAJOR"			: 1,
-        "MINOR"			: 1,
-        "PATCH"			: 0
-    },
-    "KSP_VERSION_MAX": {
-        "MAJOR"			: 1,
-        "MINOR"			: 1,
-        "PATCH"			: 99
-    }
+	"KSP_VERSION": {
+		"MAJOR"			: 1,
+		"MINOR"			: 2,
+		"PATCH"			: 0
+	},
+	"KSP_VERSION_MIN": {
+		"MAJOR"			: 1,
+		"MINOR"			: 2,
+		"PATCH"			: 0
+	},
+	"KSP_VERSION_MAX": {
+		"MAJOR"			: 1,
+		"MINOR"			: 2,
+		"PATCH"			: 99
+	}
 }

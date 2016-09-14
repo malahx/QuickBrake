@@ -68,9 +68,6 @@
     <Reference Include="System">
       <HintPath>..\lib\Managed\System.dll</HintPath>
     </Reference>
-    <Reference Include="KSPUtil">
-      <HintPath>..\lib\Managed\KSPUtil.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\lib\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>

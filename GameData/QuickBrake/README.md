@@ -34,9 +34,13 @@ Delete the QuickBrake folder in your KSP/GameData folder.
 
 #### Changelog
 
+v1.14 - 2016.09.14
+* Fix: Deleted useless libraries,
+* Compiled against KSP 1.2.0.1473
+
 v1.13 - 2016.06.23
 * New: Re-Added all GUI and support of Blizzy/Stock toolbars,
-* New: Added unbrake at launch ,
+* New: Added unbrake at launch,
 * Fix: Enhanced the settings functions,
 * Compiled against KSP 1.1.3.1289
 
