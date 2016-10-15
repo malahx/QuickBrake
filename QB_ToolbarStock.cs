@@ -32,7 +32,7 @@ namespace QuickBrake
 
 		private static bool CanUseIt {
 			get {
-				return HighLogic.LoadedSceneIsGame;
+				return HighLogic.LoadedScene == GameScenes.SPACECENTER;
 			}
 		}
 
@@ -76,7 +76,6 @@ namespace QuickBrake
 		}
 
 		private void AppLauncherReady() {
-			QSettings.Instance.Load ();
 			if (!Enabled) {
 				return;
 			}

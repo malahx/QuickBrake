@@ -29,7 +29,10 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="./install.sh" />
+        <Command>
+          <type>AfterBuild</type>
+          <command>./install.sh</command>
+        </Command>
       </CustomCommands>
     </CustomCommands>
     <DebugSymbols>true</DebugSymbols>

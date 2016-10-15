@@ -32,8 +32,8 @@ namespace QuickBrake {
 
 	public partial class QuickBrake : MonoBehaviour {
 
-		public readonly static string VERSION = Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Major + "." + Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Minor + Assembly.GetAssembly(typeof(QuickBrake)).GetName().Version.Build;
-		public readonly static string MOD = Assembly.GetAssembly(typeof(QuickBrake)).GetName().Name;
+		public readonly static string VERSION = Assembly.GetExecutingAssembly ().GetName ().Version.Major + "." + Assembly.GetExecutingAssembly ().GetName ().Version.Minor + Assembly.GetExecutingAssembly ().GetName ().Version.Build;
+		public readonly static string MOD = Assembly.GetExecutingAssembly ().GetName ().Name;
 
 		protected static void Log(string String, string Title = null, bool force = false) {
 			if (!force) {

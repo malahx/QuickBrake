@@ -38,10 +38,12 @@ namespace QuickBrake {
 
 		[Persistent] internal bool EnableBrakeAtLaunchPad = false;
 		[Persistent] internal bool EnableBrakeAtRunway = true;
+		[Persistent] internal bool EnableBrakeAtControlLost = true;
 		[Persistent] internal bool EnableUnBrakeAtLaunch = true;
 		[Persistent] internal bool AlwaysBrakeLandedRover = true;
 		[Persistent] internal bool AlwaysBrakeLandedBase = false;
 		[Persistent] internal bool AlwaysBrakeLandedLander = false;
+		[Persistent] internal bool AlwaysBrakeLandedPlane = true;
 		[Persistent] internal bool AlwaysBrakeLandedVessel = false;
 
 		[Persistent] internal bool StockToolBar = true;

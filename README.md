@@ -34,6 +34,13 @@ Delete the QuickBrake folder in your KSP/GameData folder.
 
 #### Changelog
 
+v1.20 - 2016.10.15
+* New: Added a brake at control lost,
+* New: Added a brake for landed plane,
+* Fix: Corrected the stocktoolbar button,
+* Fix: Corrected the loading of the settings,
+* Compiled against KSP 1.2.0.1586
+
 v1.14 - 2016.09.14
 * Fix: Deleted useless libraries,
 * Compiled against KSP 1.2.0.1473
